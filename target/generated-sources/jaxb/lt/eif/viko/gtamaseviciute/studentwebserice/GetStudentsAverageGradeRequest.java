@@ -34,8 +34,8 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "")
-@XmlRootElement(name = "getStudentsRequest")
-public class GetStudentsRequest {
+@XmlRootElement(name = "getStudentsAverageGradeRequest")
+public class GetStudentsAverageGradeRequest {
 
 
 }

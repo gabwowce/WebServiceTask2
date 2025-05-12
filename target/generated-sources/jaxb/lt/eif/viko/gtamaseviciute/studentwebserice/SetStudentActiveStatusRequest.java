@@ -25,7 +25,8 @@ import jakarta.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="group" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="active" type="{http://www.w3.org/2001/XMLSchema}boolean"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -36,36 +37,54 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "group"
+    "name",
+    "active"
 })
-@XmlRootElement(name = "getStudentsByGroupRequest")
-public class GetStudentsByGroupRequest {
+@XmlRootElement(name = "setStudentActiveStatusRequest")
+public class SetStudentActiveStatusRequest {
 
     @XmlElement(required = true)
-    protected String group;
+    protected String name;
+    protected boolean active;
 
     /**
-     * Gets the value of the group property.
+     * Gets the value of the name property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getGroup() {
-        return group;
+    public String getName() {
+        return name;
     }
 
     /**
-     * Sets the value of the group property.
+     * Sets the value of the name property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setGroup(String value) {
-        this.group = value;
+    public void setName(String value) {
+        this.name = value;
+    }
+
+    /**
+     * Gets the value of the active property.
+     * 
+     */
+    public boolean isActive() {
+        return active;
+    }
+
+    /**
+     * Sets the value of the active property.
+     * 
+     */
+    public void setActive(boolean value) {
+        this.active = value;
     }
 
 }

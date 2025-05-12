@@ -50,12 +50,47 @@
         </xs:complexType>
     </xs:element>
 
+    <xs:element name="setStudentActiveStatusRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="name" type="xs:string"/>
+                <xs:element name="active" type="xs:boolean"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="setStudentActiveStatusResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="active" type="xs:boolean"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+    <xs:element name="getStudentsAverageGradeRequest">
+        <xs:complexType>
+            <xs:sequence/>
+        </xs:complexType>
+    </xs:element>
+
+
+    <xs:element name="getStudentsAverageGradeResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="averageGrade" type="xs:float"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
 
     <xs:complexType name="student">
         <xs:sequence>
             <xs:element name="name" type="xs:string"/>
             <xs:element name="age" type="xs:int"/>
             <xs:element name="group" type="xs:string"/>
+            <xs:element name="averageGrade" type="xs:float"/>
+            <xs:element name="active" type="xs:boolean"/>
+            <xs:element name="gender" type="xs:string"/>
             <xs:element name="subjects" type="tns:subject" maxOccurs="unbounded"/>
         </xs:sequence>
     </xs:complexType>

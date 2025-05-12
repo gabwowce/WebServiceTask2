@@ -12,6 +12,18 @@ import org.springframework.ws.wsdl.wsdl11.DefaultWsdl11Definition;
 import org.springframework.xml.xsd.SimpleXsdSchema;
 import org.springframework.xml.xsd.XsdSchema;
 
+
+/**
+ * Web Service konfigūracija, atsakinga už SOAP žinučių nukreipimą ir WSDL generavimą.
+ * <p>
+ * Ši klasė konfigūruoja Spring Web Services funkcionalumą:
+ * <ul>
+ *     <li>Registruoja {@link MessageDispatcherServlet}, kuris apdoroja SOAP užklausas.</li>
+ *     <li>Apibrėžia WSDL failo generavimą naudojant XSD schemą.</li>
+ *     <li>Nurodo, kokią XML schemą naudoti studentų duomenims aprašyti.</li>
+ * </ul>
+ * </p>
+ */
 @EnableWs
 @Configuration
 public class WebServiceConfig extends WsConfigurerAdapter {

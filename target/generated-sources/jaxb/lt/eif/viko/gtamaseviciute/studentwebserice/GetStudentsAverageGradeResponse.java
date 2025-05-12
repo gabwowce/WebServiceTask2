@@ -24,6 +24,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
+ *         &lt;element name="averageGrade" type="{http://www.w3.org/2001/XMLSchema}float"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -33,9 +34,28 @@ import jakarta.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "")
-@XmlRootElement(name = "getStudentsRequest")
-public class GetStudentsRequest {
+@XmlType(name = "", propOrder = {
+    "averageGrade"
+})
+@XmlRootElement(name = "getStudentsAverageGradeResponse")
+public class GetStudentsAverageGradeResponse {
 
+    protected float averageGrade;
+
+    /**
+     * Gets the value of the averageGrade property.
+     * 
+     */
+    public float getAverageGrade() {
+        return averageGrade;
+    }
+
+    /**
+     * Sets the value of the averageGrade property.
+     * 
+     */
+    public void setAverageGrade(float value) {
+        this.averageGrade = value;
+    }
 
 }

@@ -2,6 +2,7 @@ package lt.eif.viko.gtamaseviciute;
 
 import lt.eif.viko.gtamaseviciute.studentwebserice.Student;
 import lt.eif.viko.gtamaseviciute.studentwebserice.Subject;
+import static lt.eif.viko.gtamaseviciute.StudentUtils.calculateAverage;
 
 import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Component;
@@ -11,10 +12,34 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Studentų duomenų saugykla (repository), laikanti studentų duomenis.
+ * <p>
+ * Ši klasė simuliuoja duomenų bazę, saugodama informaciją apie studentus ir jų mokomuosius dalykus (subjects).
+ * Duomenys inicializuojami panaudojus {@link PostConstruct} metodą {@link #initData()}.
+ * </p>
+ * <p>
+ * Galimos operacijos:
+ * <ul>
+ *     <li>Rasti studentą pagal vardą</li>
+ *     <li>Gauti visų studentų sąrašą</li>
+ *     <li>Gauti studentus pagal grupę</li>
+ * </ul>
+ * </p>
+ */
 @Component
 public class StudentRepository {
+    /**
+     * Studentų saugykla, kur raktas yra studento vardas.
+     */
     private static final Map<String, Student> students = new HashMap<>();
 
+    /**
+     * Inicializuoja testinius studentų duomenis su jų mokomaisiais dalykais.
+     * <p>
+     * Šis metodas iškviečiamas automatiškai aplikacijos paleidimo metu.
+     * </p>
+     */
     @PostConstruct
     public void initData(){
 
@@ -36,6 +61,10 @@ public class StudentRepository {
         student1.getSubjects().add(student1Subj2);
         student1.getSubjects().add(student1Subj3);
 
+        student1.setAverageGrade(calculateAverage(student1));
+        student1.setActive(true);
+        student1.setGender("M");
+
         students.put(student1.getName(), student1);
 
 
@@ -56,6 +85,10 @@ public class StudentRepository {
         student2.getSubjects().add(student2Subj1);
         student2.getSubjects().add(student2Subj2);
         student2.getSubjects().add(student2Subj3);
+
+        student2.setAverageGrade(calculateAverage(student2));
+        student2.setActive(true);
+        student2.setGender("F");
 
         students.put(student2.getName(), student2);
 
@@ -81,19 +114,39 @@ public class StudentRepository {
         student3.getSubjects().add(student3Subj2);
         student3.getSubjects().add(student3Subj3);
 
+        student3.setAverageGrade(calculateAverage(student3));
+        student3.setActive(false);
+        student3.setGender("M");
 
         students.put(student3.getName(), student3);
 
     }
 
+    /**
+     * Randa studentą pagal jo vardą.
+     *
+     * @param name studento vardas
+     * @return studentas
+     */
     public Student findStudent(String name) {
         return students.get(name);
     }
 
-    public List<Student> findAllStudens() {
+    /**
+     * Grąžina visų studentų sąrašą.
+     *
+     * @return sąrašas visų studentų
+     */
+    public List<Student> findAllStudents() {
         return new ArrayList<>(students.values());
     }
 
+    /**
+     * Grąžina studentus pagal nurodytą grupės pavadinimą.
+     *
+     * @param group grupės pavadinimas
+     * @return sąrašas studentų, kurie priklauso nurodytai grupei
+     */
     public List<Student> findStudentsByGroup(String group) {
         List<Student> studentsByGroup = new ArrayList<>();
         for (Student student : students.values()) {

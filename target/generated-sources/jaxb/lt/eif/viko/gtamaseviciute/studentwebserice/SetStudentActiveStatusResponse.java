@@ -24,6 +24,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
+ *         &lt;element name="active" type="{http://www.w3.org/2001/XMLSchema}boolean"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -33,9 +34,28 @@ import jakarta.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "")
-@XmlRootElement(name = "getStudentsRequest")
-public class GetStudentsRequest {
+@XmlType(name = "", propOrder = {
+    "active"
+})
+@XmlRootElement(name = "setStudentActiveStatusResponse")
+public class SetStudentActiveStatusResponse {
 
+    protected boolean active;
+
+    /**
+     * Gets the value of the active property.
+     * 
+     */
+    public boolean isActive() {
+        return active;
+    }
+
+    /**
+     * Sets the value of the active property.
+     * 
+     */
+    public void setActive(boolean value) {
+        this.active = value;
+    }
 
 }
